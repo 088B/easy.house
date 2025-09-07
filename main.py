@@ -137,7 +137,7 @@ OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')
 if not OPENAI_API_KEY:
     logger.error("OPENAI_API_KEY not set in environment (.env).")
     raise RuntimeError('OPENAI_API_KEY is missing. Create .env and set your key.')
->>>>>>> 7b4f055 (Add OpenAI library for deployment)
+    
 
 # Initialize OpenAI client (1.x style)
 client = OpenAI(api_key=OPENAI_API_KEY)
