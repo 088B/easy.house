@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset='UTF-8'/>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'/>
+  <title>Virtual House Inserter</title>
+  <link rel='stylesheet' href='/static/styles.css'/>
+</head>
+<body>
+  <div class='container'>
+    <h1>Virtual House Inserter</h1>
+    <p class='sub'>Upload a real photo, mark the area for the house, describe it, and generate.</p>
+    <form id='form' enctype='multipart/form-data'>
+      <div class='field'>
+        <label class='label'>Choose image</label>
+        <input type='file' id='image' name='image' accept='image/*' required />
+      </div>
+      <div id='canvas-wrap' class='canvas-wrap hidden'>
+        <canvas id='canvas'></canvas>
+        <div class='hint'>Click to add points. Double‑click to close. Use "Reset selection" to start over.</div>
+        <div class='buttons'>
+          <button type='button' id='resetBtn'>Reset selection</button>
+        </div>
+      </div>
+      <div class='field'>
+        <label class='label'>Describe the house you want</label>
+        <textarea id='prompt' name='prompt' rows='6' placeholder='Example: Add a two-story modern house with a flat roof, white plaster + dark wood, large 3:4 windows, realistic lighting/shadows matching the photo, aligned to ground perspective.' required></textarea>
+      </div>
+      <div class='field row'>
+        <div>
+          <label class='label'>Output size (optional)</label>
+          <select id='size' name='size'>
+            <option value=''>auto (keep image size)</option>
+            <option value='1024x1024'>1024x1024</option>
+            <option value='1536x1024'>1536x1024 (portrait)</option>
+            <option value='1024x1536'>1024x1536 (landscape)</option>
+          </select>
+        </div>
+        <div>
+          <label class='label'>Quality (optional)</label>
+          <select id='quality' name='quality'>
+            <option value=''>auto</option>
+            <option value='low'>low</option>
+            <option value='medium'>medium</option>
+            <option value='high'>high</option>
+          </select>
+        </div>
+        <div>
+          <label class='label'>Format</label>
+          <select id='output_format' name='output_format'>
+            <option value='png'>PNG</option>
+            <option value='jpeg'>JPEG</option>
+          </select>
+        </div>
+      </div>
+      <input type='hidden' id='points' name='points'/>
+      <button type='submit' id='submitBtn'>Generate</button>
+    </form>
+    <div id='progress' class='progress hidden'>Generating… this can take a bit.</div>
+    <div id='result' class='result hidden'>
+      <h2>Result</h2>
+      <img id='resultImg' alt='Result'/>
+      <a id='downloadLink' href='#' download>Download</a>
+    </div>
+  </div>
+  <script src='/static/script.js'></script>
+</body>
+</html>
