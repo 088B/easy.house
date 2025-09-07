@@ -16,7 +16,7 @@ from .utils import points_to_mask
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
-<<<<<<< HEAD
+
 
 # Load .env
 load_dotenv()
