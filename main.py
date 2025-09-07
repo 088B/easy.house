@@ -129,7 +129,7 @@ async def edit_image(
         logger.exception("Error in /api/edit")
         raise HTTPException(status_code=500, detail=str(e))
 
-=======
+
 
 # Load .env
 load_dotenv()
